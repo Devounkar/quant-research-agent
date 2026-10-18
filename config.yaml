@@ -1,0 +1,40 @@
+# ---------------- LLM ----------------
+llm:
+  provider: anthropic          # anthropic | openai | ollama | mock (offline demo)
+  model: claude-sonnet-5-5     # e.g. gpt-4o for openai, qwen2.5-coder:14b for ollama
+  critic_model: null           # optional: use a different (e.g. stronger) model for the critic
+  temperature: 0.4
+  max_tokens: 3000
+  base_url: null               # OpenAI-compatible endpoint (Groq, Together, vLLM) or Ollama host
+
+# ---------------- Data ----------------
+data:
+  source: synthetic            # synthetic (offline demo) | csv | yfinance
+  ticker: "^NSEI"              # Nifty 50 on Yahoo Finance; try NIFTYBEES.NS, ^NSEBANK, RELIANCE.NS
+  csv_path: data/nifty.csv     # needs columns: date, open, high, low, close, volume
+  start: null                  # e.g. "2008-01-01"
+  end: null
+  holdout_fraction: 0.2        # last 20% hidden from the agent, used once at submission
+  seed: 11                     # synthetic data seed
+
+# ---------------- Backtest ----------------
+backtest:
+  cost_bps: 5                  # cost per unit position change (5 bps ~ index futures/ETF incl. slippage)
+  periods_per_year: 252
+  n_folds: 5                   # walk-forward folds
+
+# ---------------- Agent ----------------
+agent:
+  max_steps: 40
+  max_strategies: 12           # max strategy versions (trials) per run
+  context_turns: 10            # recent turns kept in context; older ones live in the research log
+  sandbox_timeout: 60          # seconds per code execution
+
+# ---------------- Submission gates ----------------
+gates:
+  min_oos_sharpe: 0.5          # walk-forward out-of-sample Sharpe
+  min_dsr: 0.9                 # deflated Sharpe ratio (probability edge is real given # of trials)
+  max_drawdown: 0.35           # out-of-sample max drawdown
+  min_trades: 10
+
+output_dir: runs

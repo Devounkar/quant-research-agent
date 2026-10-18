@@ -1,0 +1,63 @@
+{
+  "submitted": true,
+  "strategy": "trend_filter v1",
+  "name": "trend_filter",
+  "summary": "Long-only trend filter; reduces drawdowns by sitting out down regimes.",
+  "holdout": {
+    "ok": true,
+    "params_used": {
+      "fast": 50,
+      "slow": 150
+    },
+    "metrics": {
+      "start": "2022-04-08",
+      "end": "2025-05-01",
+      "n_periods": 800,
+      "total_return": 0.2546,
+      "cagr": 0.0741,
+      "ann_vol": 0.1236,
+      "sharpe": 0.64,
+      "sortino": 0.72,
+      "max_drawdown": -0.2243,
+      "calmar": 0.3301,
+      "skew": -0.149,
+      "kurtosis": 7.776,
+      "n_trades": 6,
+      "turnover_per_year": 1.89,
+      "exposure": 0.527,
+      "avg_abs_position": 0.527,
+      "hit_rate": 0.514
+    },
+    "buy_hold": {
+      "start": "2022-04-08",
+      "end": "2025-05-01",
+      "n_periods": 800,
+      "total_return": 0.3286,
+      "cagr": 0.0936,
+      "ann_vol": 0.1814,
+      "sharpe": 0.584,
+      "sortino": 0.895,
+      "max_drawdown": -0.4091,
+      "calmar": 0.2288,
+      "skew": -0.139,
+      "kurtosis": 4.01
+    },
+    "yearly": {
+      "2022": 0.2156,
+      "2023": 0.0047,
+      "2024": 0.043,
+      "2025": -0.0152
+    },
+    "warnings": [],
+    "series_path": "(local path)"
+  },
+  "dsr": {
+    "dsr": 0.9941,
+    "psr_vs_zero": 0.9941,
+    "n_trials": 1,
+    "sharpe_hurdle_annual": 0.0
+  },
+  "steps_used": 10,
+  "elapsed_sec": 6.1,
+  "llm_calls": 11
+}

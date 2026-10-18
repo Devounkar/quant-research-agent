@@ -1,0 +1,217 @@
+[
+  {
+    "name": "momentum_z",
+    "version": 1,
+    "code_hash": "cd065be887",
+    "hypothesis": "Medium-term momentum persists due to investor under-reaction.",
+    "path": "(local path)",
+    "created_step": 3,
+    "backtest": null,
+    "lookahead": {
+      "passed": false,
+      "failures": [
+        {
+          "cut_date": "2012-06-15",
+          "n_mismatched": 62,
+          "first_mismatch": "2010-04-02",
+          "max_abs_diff": 2.0
+        },
+        {
+          "cut_date": "2014-06-02",
+          "n_mismatched": 27,
+          "first_mismatch": "2010-06-18",
+          "max_abs_diff": 2.0
+        },
+        {
+          "cut_date": "2016-05-18",
+          "n_mismatched": 15,
+          "first_mismatch": "2010-06-18",
+          "max_abs_diff": 2.0
+        },
+        {
+          "cut_date": "2018-05-03",
+          "n_mismatched": 1,
+          "first_mismatch": "2017-03-24",
+          "max_abs_diff": 2.0
+        },
+        {
+          "cut_date": "2020-04-20",
+          "n_mismatched": 2,
+          "first_mismatch": "2011-07-21",
+          "max_abs_diff": 2.0
+        }
+      ]
+    },
+    "walk_forward": null,
+    "critique": null,
+    "sr_per_period": null
+  },
+  {
+    "name": "trend_filter",
+    "version": 1,
+    "code_hash": "7859d67680",
+    "hypothesis": "Markets move in persistent regimes; being long only in uptrends (fast MA above slow MA) avoids most of the high-volatility down regimes.",
+    "path": "(local path)",
+    "created_step": 5,
+    "backtest": {
+      "start": "2010-01-01",
+      "end": "2022-04-07",
+      "n_periods": 3200,
+      "total_return": 3.495,
+      "cagr": 0.1256,
+      "ann_vol": 0.1398,
+      "sharpe": 0.916,
+      "sortino": 1.152,
+      "max_drawdown": -0.2544,
+      "calmar": 0.4938,
+      "skew": 0.016,
+      "kurtosis": 6.595,
+      "n_trades": 18,
+      "turnover_per_year": 1.42,
+      "exposure": 0.664,
+      "avg_abs_position": 0.664,
+      "hit_rate": 0.537,
+      "yearly": {
+        "2010": 0.1178,
+        "2011": 0.3516,
+        "2012": -0.0083,
+        "2013": -0.0296,
+        "2014": 0.2553,
+        "2015": 0.0684,
+        "2016": 0.0,
+        "2017": 0.285,
+        "2018": 0.1444,
+        "2019": -0.0066,
+        "2020": 0.6257,
+        "2021": 0.1817,
+        "2022": -0.1786
+      }
+    },
+    "lookahead": {
+      "passed": true,
+      "failures": []
+    },
+    "walk_forward": {
+      "oos_sharpe": 0.774,
+      "combined_oos": {
+        "start": "2012-01-18",
+        "end": "2022-04-07",
+        "n_periods": 2667,
+        "total_return": 1.932,
+        "cagr": 0.107,
+        "ann_vol": 0.1448,
+        "sharpe": 0.774,
+        "sortino": 0.971,
+        "max_drawdown": -0.2474,
+        "calmar": 0.4325,
+        "skew": 0.07,
+        "kurtosis": 6.694,
+        "n_trades": 18,
+        "turnover_per_year": 1.7,
+        "exposure": 0.663,
+        "avg_abs_position": 0.663,
+        "hit_rate": 0.531
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "test_start": "2012-01-18",
+          "test_end": "2014-01-31",
+          "params": {
+            "fast": 10,
+            "slow": 100
+          },
+          "in_sample_sharpe": 1.775,
+          "oos_sharpe": -0.3,
+          "oos_return": -0.0876,
+          "oos_max_dd": -0.2159,
+          "buy_hold_sharpe": -0.709
+        },
+        {
+          "fold": 2,
+          "test_start": "2014-02-03",
+          "test_end": "2016-02-17",
+          "params": {
+            "fast": 50,
+            "slow": 150
+          },
+          "in_sample_sharpe": 0.917,
+          "oos_sharpe": 0.933,
+          "oos_return": 0.3666,
+          "oos_max_dd": -0.2146,
+          "buy_hold_sharpe": 1.343
+        },
+        {
+          "fold": 3,
+          "test_start": "2016-02-18",
+          "test_end": "2018-03-05",
+          "params": {
+            "fast": 50,
+            "slow": 150
+          },
+          "in_sample_sharpe": 0.916,
+          "oos_sharpe": 1.441,
+          "oos_return": 0.4351,
+          "oos_max_dd": -0.1574,
+          "buy_hold_sharpe": 0.504
+        },
+        {
+          "fold": 4,
+          "test_start": "2018-03-06",
+          "test_end": "2020-03-19",
+          "params": {
+            "fast": 50,
+            "slow": 150
+          },
+          "in_sample_sharpe": 1.027,
+          "oos_sharpe": 0.685,
+          "oos_return": 0.1713,
+          "oos_max_dd": -0.1879,
+          "buy_hold_sharpe": 1.088
+        },
+        {
+          "fold": 5,
+          "test_start": "2020-03-20",
+          "test_end": "2022-04-07",
+          "params": {
+            "fast": 50,
+            "slow": 150
+          },
+          "in_sample_sharpe": 0.966,
+          "oos_sharpe": 0.996,
+          "oos_return": 0.399,
+          "oos_max_dd": -0.2433,
+          "buy_hold_sharpe": 0.657
+        }
+      ],
+      "buy_hold_oos": {
+        "start": "2012-01-18",
+        "end": "2022-04-07",
+        "n_periods": 2667,
+        "total_return": 1.2343,
+        "cagr": 0.0789,
+        "ann_vol": 0.1947,
+        "sharpe": 0.488,
+        "sortino": 0.73,
+        "max_drawdown": -0.4534,
+        "calmar": 0.1741,
+        "skew": -0.051,
+        "kurtosis": 4.586
+      },
+      "n_positive_folds": 4,
+      "grid_size": 9,
+      "series_path": "(local path)",
+      "dsr": 0.9941
+    },
+    "critique": {
+      "verdict": "pass",
+      "issues": [
+        "(mock critic) Long-only filter can lag sharp reversals; parameters chosen from a small grid."
+      ],
+      "suggestions": [
+        "Test sensitivity to transaction costs and to the slow window."
+      ]
+    },
+    "sr_per_period": 0.048757417018190315
+  }
+]
